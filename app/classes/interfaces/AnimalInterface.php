@@ -4,7 +4,7 @@ namespace app\classes\interfaces;
 
 interface AnimalInterface
 {
-    public function getIdAnimals();
+    public function getId();
 
     public function getAnimalType();
 

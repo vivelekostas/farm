@@ -3,29 +3,22 @@
 
 namespace app\classes\animals;
 
-require_once __DIR__ . '\Animal.php';
 
 class Cow extends Animal
 {
-    protected $animalType = 'cow';
+    public const TYPE = 'cow';
 
-    protected $productType = 'milk';
+    public const PRODUCT_TYPE = 'milk';
 
-    public $id;
-
-    public function getIdAnimals()
-    {
-        return $this->id;
-    }
 
     public function getAnimalType()
     {
-        return $this->animalType;
+        return self::TYPE;
     }
 
     public function getProductType()
     {
-        return $this->productType;
+        return self::PRODUCT_TYPE;
     }
 
     public function getProduct()

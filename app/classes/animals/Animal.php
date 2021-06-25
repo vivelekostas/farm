@@ -2,17 +2,23 @@
 
 namespace app\classes\animals;
 
-require_once 'app\classes\interfaces\AnimalInterface.php';
-
 use app\classes\interfaces\AnimalInterface;
-
 
 abstract class Animal implements AnimalInterface
 {
-    public $id;
+    protected $id;
 
     public function __construct($id)
     {
         $this->id = $id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 }

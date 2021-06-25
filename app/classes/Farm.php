@@ -18,15 +18,15 @@ class Farm
     {
         $animalsTypeAndQuantity = [];
 
+        /** @var AnimalInterface $animal */
         foreach ($this->animals as $animal) {
             // если массив пустой или не содержит в себе типа животного в виде ключа, то добавить такой ключ.
             if (empty($animalsTypeAndQuantity) || (!array_key_exists($animal->getAnimalType(), $animalsTypeAndQuantity))) {
                 $animalsTypeAndQuantity[$animal->getAnimalType()] = null;
             }
+
             // если тип итерируемого животного в виде ключа уже существует, то просто посчитать его
-            if (array_key_exists($animal->getAnimalType(), $animalsTypeAndQuantity)) {
-                $animalsTypeAndQuantity[$animal->getAnimalType()] += 1;
-            }
+            $animalsTypeAndQuantity[$animal->getAnimalType()] += 1;
         }
 
         return $animalsTypeAndQuantity;
@@ -34,13 +34,13 @@ class Farm
 
     public function collectProduct()
     {
+        /** @var AnimalInterface $animal */
         foreach ($this->animals as $animal) {
             if (empty($this->products) || (!array_key_exists($animal->getProductType(), $this->products))) {
                 $this->products[$animal->getProductType()] = null;
             }
-            if (array_key_exists($animal->getProductType(), $this->products)) {
-                $this->products[$animal->getProductType()] += $animal->getProduct();
-            }
+
+            $this->products[$animal->getProductType()] += $animal->getProduct();
         }
     }
 
@@ -51,7 +51,7 @@ class Farm
 
     public function releaseProducts()
     {
-        return $this->products = array();
+        return $this->products = [];
     }
 
     public function addAnimal(AnimalInterface $animal)
